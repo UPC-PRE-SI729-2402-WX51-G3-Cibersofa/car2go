@@ -1,7 +1,4 @@
-package com.pe.platform.iam.domain.model.aggregates;
-
-import com.pe.platform.iam.domain.model.entities.Role;
-import com.pe.platform.shared.domain.model.aggregates.AuditableAbstractAggregateRoot;
+package com.pe.platform.iam.domain.model.aggregates ;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
@@ -10,6 +7,9 @@ import lombok.Getter;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+
+import com.pe.platform.iam.domain.model.entities.Role;
+import com.pe.platform.shared.domain.model.aggregates.AuditableAbstractAggregateRoot;
 
 @Getter
 @Entity
@@ -25,7 +25,7 @@ public class User extends AuditableAbstractAggregateRoot<User> {
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "role_id"))
+    inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles;
 
     public User() {
