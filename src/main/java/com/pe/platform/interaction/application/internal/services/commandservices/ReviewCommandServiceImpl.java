@@ -33,12 +33,10 @@ public class ReviewCommandServiceImpl implements ReviewCommandService {
         return reviewRepository.findByVehicleId(vehicleId).stream().findFirst();
     }
 
-
     @Override
     public Optional<Review> getReviewById(Long reviewId) {
         return reviewRepository.findById(reviewId);
     }
-
     @Transactional
     @Override
     public Review createReview(int vehicleId, String reviewedBy, String notes, vehicleStatus status) {
@@ -67,5 +65,4 @@ public class ReviewCommandServiceImpl implements ReviewCommandService {
     public void saveReview(Review review) {
         reviewRepository.save(review);
     }
-
 }

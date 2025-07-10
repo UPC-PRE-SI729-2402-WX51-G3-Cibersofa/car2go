@@ -30,7 +30,7 @@ public class ReviewController {
         this.reviewCommandService = reviewCommandService;
     }
 
-    @PreAuthorize("hasAuthority('ROLE_MECHANIC')")
+
     @PostMapping
     public ResponseEntity<?> createReview(@RequestBody CreateReviewRequest reviewRequest) {
         int vehicleId = reviewRequest.getVehicleId();
@@ -58,7 +58,6 @@ public class ReviewController {
 
 
 
-    @PreAuthorize("hasAuthority('ROLE_MECHANIC')")
     @GetMapping("/{carId}")
     public ResponseEntity<ReviewDTO> getReviewByCarId(@PathVariable("carId") int carId) {
         Optional<Review> review = reviewCommandService.getReviewByVehicleId(carId);

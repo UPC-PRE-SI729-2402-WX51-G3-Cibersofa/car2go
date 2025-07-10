@@ -1,4 +1,4 @@
-package com.pe.platform.interaction.interfaces.rest.dto;  // Ajusta este paquete según la ubicación que elijas.
+package com.pe.platform.interaction.interfaces.rest.dto;
 
 public class CreateReviewRequest {
     private int vehicleId;

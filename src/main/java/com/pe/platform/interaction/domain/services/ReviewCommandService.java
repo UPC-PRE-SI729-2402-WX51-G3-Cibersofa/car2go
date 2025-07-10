@@ -9,9 +9,12 @@ import java.util.Optional;
 public interface ReviewCommandService {
 
     List<Review> getAllReviews();
-    Optional<Review> getReviewByVehicleId(int vehicleId);
-    Optional<Review> getReviewById(Long reviewId);
-    Review createReview(int vehicleId, String reviewedBy, String notes, vehicleStatus status);
-    void saveReview(Review review);
 
+    Optional<Review> getReviewByVehicleId(int vehicleId);
+
+    Optional<Review> getReviewById(Long reviewId);
+
+    Review createReview(int vehicleId, String reviewedBy, String notes, vehicleStatus status);
+
+    void saveReview(Review review);
 }
