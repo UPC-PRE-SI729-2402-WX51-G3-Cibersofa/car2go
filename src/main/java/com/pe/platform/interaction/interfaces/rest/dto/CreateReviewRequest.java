@@ -3,12 +3,8 @@ package com.pe.platform.interaction.interfaces.rest.dto;  // Ajusta este paquete
 public class CreateReviewRequest {
     private int vehicleId;
     private String notes;
-    private boolean isApproved;
+    private String status;
 
-    // Constructor sin parámetros
-    public CreateReviewRequest() {}
-
-    // Getters y Setters
     public int getVehicleId() {
         return vehicleId;
     }
@@ -25,11 +21,11 @@ public class CreateReviewRequest {
         this.notes = notes;
     }
 
-    public boolean isApproved() {
-        return isApproved;
+    public String getStatus() {
+        return status;
     }
 
-    public void setApproved(boolean approved) {
-        isApproved = approved;
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

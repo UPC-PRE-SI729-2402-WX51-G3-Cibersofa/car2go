@@ -33,9 +33,15 @@ public class ReviewCommandServiceImpl implements ReviewCommandService {
         return reviewRepository.findByVehicleId(vehicleId).stream().findFirst();
     }
 
+
+    @Override
+    public Optional<Review> getReviewById(Long reviewId) {
+        return reviewRepository.findById(reviewId);
+    }
+
     @Transactional
     @Override
-    public Review createReview(int vehicleId, String reviewedBy, String notes, boolean isApproved) {
+    public Review createReview(int vehicleId, String reviewedBy, String notes, vehicleStatus status) {
         Optional<Review> existingReview = getReviewByVehicleId(vehicleId);
         if (existingReview.isPresent()) {
             throw new IllegalArgumentException("A review already exists for this vehicle.");
@@ -51,14 +57,15 @@ public class ReviewCommandServiceImpl implements ReviewCommandService {
         Review newReview = new Review(vehicle, reviewedBy, notes);
         Review savedReview = reviewRepository.save(newReview);
 
-        if (isApproved) {
-            vehicle.setStatus(vehicleStatus.REVIEWED);
-        } else {
-            vehicle.setStatus(vehicleStatus.REJECT);
-        }
-
+        vehicle.setStatus(status);
         vehicleRepository.save(vehicle);
 
         return savedReview;
     }
+
+    @Override
+    public void saveReview(Review review) {
+        reviewRepository.save(review);
+    }
+
 }
